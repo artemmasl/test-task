@@ -1,6 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import test from "../layouts/DefaultLayout";
+import DefaultLayout from "../layouts/DefaultLayout";
+import Home from "../views/Home";
+import Market from "../views/Market";
+import Basket from "../views/Basket";
+import Profile from "../views/Profile";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -8,7 +12,25 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      component: test,
+      component: DefaultLayout,
+      children: [
+        {
+          path: "/home",
+          component: Home,
+        },
+        {
+          path: "/catalog",
+          component: Market,
+        },
+        {
+          path: "/basket",
+          component: Basket,
+        },
+        {
+          path: "/profile",
+          component: Profile,
+        },
+      ],
     },
   ],
 });
