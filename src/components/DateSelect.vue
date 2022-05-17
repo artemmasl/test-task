@@ -172,7 +172,6 @@ export default {
           month: date.toLocaleString("default", { month: "long" }),
           year: date.getFullYear(),
         };
-        console.log(date.getDate());
       }
     },
     blurDay() {
