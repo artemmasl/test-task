@@ -1,8 +1,8 @@
 <template>
   <div class="header" :class="{ header_active: menuActive }">
-    <div class="header__logo">
+    <router-link to="/home" class="header__logo">
       <img src="../assets/logo.svg" />
-    </div>
+    </router-link>
     <div class="header__container">
       <div
         class="nav-toggle"
@@ -15,18 +15,15 @@
       <span class="nav-toggle__text">МЕНЮ</span>
     </div>
     <div class="header__nav">
-      <li @click="redirect('/catalog')">
-        <img src="../assets/catalog.svg" />
-        <span>Каталог</span>
-      </li>
-      <li @click="redirect('/basket')">
-        <img src="../assets/basket.svg" />
-        <span>Мои заказы</span>
-      </li>
-      <li @click="redirect('/profile')">
-        <img src="../assets/user.svg" />
-        <span>Личный кабинет</span>
-      </li>
+      <router-link
+        v-for="link in links"
+        :key="link.text"
+        :to="link.path"
+        class="header__nav-item"
+      >
+        <img :src="link.imgSrc" />
+        <span>{{ link.text }}</span>
+      </router-link>
     </div>
   </div>
 </template>
@@ -37,13 +34,24 @@ export default {
   data() {
     return {
       menuActive: false,
+      links: [
+        {
+          path: "/catalog",
+          imgSrc: require("../assets/catalog.svg"),
+          text: "Каталог",
+        },
+        {
+          path: "/basket",
+          imgSrc: require("../assets/basket.svg"),
+          text: "Мои заказы",
+        },
+        {
+          path: "/profile",
+          imgSrc: require("../assets/user.svg"),
+          text: "Личный кабинет",
+        },
+      ],
     };
-  },
-  methods: {
-    redirect(route) {
-      this.$router.push(route);
-      this.menuActive = false;
-    },
   },
 };
 </script>
@@ -80,18 +88,19 @@ export default {
     height: 100%;
     padding: 10px 10px 0 0;
     background: var(--brand-color);
-    li {
-      display: flex;
-      align-items: center;
-      height: 50px;
-      list-style: none;
-      text-transform: uppercase;
-      gap: 11px;
-      color: #fff;
-      cursor: pointer;
-      img {
-        width: 25px;
-      }
+  }
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    list-style: none;
+    text-transform: uppercase;
+    gap: 11px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    img {
+      width: 25px;
     }
   }
 }
@@ -208,11 +217,9 @@ export default {
         width: 58px;
       }
     }
-    &__nav {
-      li {
-        img {
-          width: 35px;
-        }
+    &__nav-item {
+      img {
+        width: 35px;
       }
     }
   }
@@ -263,16 +270,14 @@ export default {
     &__logo {
       height: 120px;
     }
-    &__nav {
+    &__nav-item {
+      flex-direction: column;
+      height: 80px;
+      text-align: center;
+      padding: 8px;
+      font-size: 10px;
       img {
         width: 35px;
-      }
-      li {
-        flex-direction: column;
-        height: 80px;
-        text-align: center;
-        padding: 8px;
-        font-size: 10px;
       }
     }
   }
