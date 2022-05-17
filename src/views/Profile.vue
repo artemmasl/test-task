@@ -83,7 +83,7 @@ export default {
 @media screen and (min-width: 1024px) {
   ::v-deep .profile-section {
     &__btn-group {
-      padding-top: 40px;
+      padding-top: 30px;
     }
   }
 }
