@@ -26,6 +26,10 @@
         <img :src="link.imgSrc" />
         <span>{{ link.text }}</span>
       </router-link>
+      <div class="header__nav-item header__nav-item_exit" @click="exit">
+        Выход
+        <img src="../assets/exit.svg" />
+      </div>
     </div>
   </div>
 </template>
@@ -54,6 +58,15 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    exit() {
+      try {
+        this.$noty.success("Выход!");
+      } catch (e) {
+        this.$noty.error(e.message);
+      }
+    },
   },
 };
 </script>
@@ -92,9 +105,11 @@ export default {
     cursor: pointer;
   }
   &__nav {
-    height: 100%;
+    height: calc(100vh - 50px);
     padding: 10px 10px 0 0;
     background: var(--brand-color);
+    display: flex;
+    flex-direction: column;
   }
   &__nav-item {
     display: flex;
@@ -111,6 +126,16 @@ export default {
     }
     span {
       margin-left: 15px;
+    }
+
+    &_exit {
+      margin-top: auto;
+      justify-content: center;
+      flex-direction: row !important;
+      img {
+        width: 8px !important;
+        font-size: 14px;
+      }
     }
   }
 }
@@ -226,6 +251,9 @@ export default {
       img {
         width: 58px;
       }
+    }
+    &__nav {
+      height: calc(100vh - 120px);
     }
     &__nav-item {
       padding: 20px 15px 20px 35px;
