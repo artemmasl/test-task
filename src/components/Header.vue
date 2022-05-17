@@ -1,18 +1,20 @@
 <template>
   <div class="header" :class="{ header_active: menuActive }">
-    <router-link to="/home" class="header__logo">
-      <img src="../assets/logo.svg" />
-    </router-link>
     <div class="header__container">
-      <div
-        class="nav-toggle"
-        :class="{ 'nav-toggle_active': menuActive }"
-        @click="menuActive = !menuActive"
-      >
-        <div class="nav-toggle__icon-left"></div>
-        <div class="nav-toggle__icon-right"></div>
+      <router-link to="/home" class="header__logo">
+        <img src="../assets/logo.svg" />
+      </router-link>
+      <div class="header__wrapper">
+        <div
+          class="nav-toggle"
+          :class="{ 'nav-toggle_active': menuActive }"
+          @click="menuActive = !menuActive"
+        >
+          <div class="nav-toggle__icon-left"></div>
+          <div class="nav-toggle__icon-right"></div>
+        </div>
+        <span class="nav-toggle__text">МЕНЮ</span>
       </div>
-      <span class="nav-toggle__text">МЕНЮ</span>
     </div>
     <div class="header__nav">
       <router-link
@@ -75,6 +77,11 @@ export default {
     align-items: center;
     height: 50px;
   }
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    height: 50px;
+  }
   &__logo {
     width: 50px;
     height: 100%;
@@ -92,15 +99,18 @@ export default {
   &__nav-item {
     display: flex;
     align-items: center;
-    height: 50px;
     list-style: none;
     text-transform: uppercase;
     gap: 11px;
     color: #fff;
     cursor: pointer;
     text-decoration: none;
+    padding: 10px 10px 10px 14px;
     img {
       width: 25px;
+    }
+    span {
+      margin-left: 15px;
     }
   }
 }
@@ -218,6 +228,10 @@ export default {
       }
     }
     &__nav-item {
+      padding: 20px 15px 20px 35px;
+      span {
+        margin-left: 45px;
+      }
       img {
         width: 35px;
       }
@@ -279,12 +293,15 @@ export default {
       img {
         width: 35px;
       }
+      span {
+        margin-left: 0;
+      }
     }
   }
   .nav-toggle {
     display: none;
   }
-  .header__container {
+  .header__wrapper {
     display: none;
   }
 }

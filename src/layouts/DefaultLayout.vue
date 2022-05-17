@@ -48,6 +48,7 @@ export default {
 @media screen and (min-width: 768px) {
   .layout__container {
     margin-top: 120px;
+    max-height: calc(100vh - 120px);
   }
 }
 @media screen and (min-width: 1024px) {
