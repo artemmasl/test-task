@@ -9,6 +9,7 @@
 
 :root {
   --brand-color: #000000;
+  --error-color: #de636f;
 }
 
 * {
@@ -27,4 +28,72 @@
 }
 .gap-1 {
   gap: 10px;
+}
+.mt-1 {
+  margin-top: 10px;
+}
+.wrapper {
+  position: relative;
+}
+.input {
+  height: 40px;
+  border: 1px solid var(--brand-color);
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+
+  &_error {
+    border: 1px solid var(--error-color);
+  }
+  &__error-text {
+    color: var(--error-color);
+  }
+  &__icon {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+  }
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 1px solid var(--brand-color);
+  border-radius: 8px;
+  background: #fff;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  &_black {
+    background: var(--brand-color);
+    color: #fff;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8000px;
+  background-color: var(--brand-color);
+  box-shadow: 0 4px 56px rgba(0, 0, 0, 0.12);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 8px;
+  background: var(--brand-color);
+}
+.scrollbar-hidden{
+  &::-webkit-scrollbar {
+    border-radius: 8px;
+    height: 0px !important;
+    width: 0px !important;  /* Remove scrollbar space */
+    background: transparent !important;  /* Optional: just make scrollbar invisible */
+  }
 }
